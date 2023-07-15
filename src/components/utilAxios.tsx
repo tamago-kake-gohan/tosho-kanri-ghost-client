@@ -6,10 +6,11 @@ const axios = new Axios({
     "Content-Type": "application/json"
   },
   responseType: "json",
-  transformRequest: [function (data) {
+  withCredentials: true,
+  transformRequest: [function (data:unknown) {
     return JSON.stringify(data);
   }],
-  transformResponse: [function (data) {
+  transformResponse: [function (data:string) {
     return JSON.parse(data);
   }]
 });
