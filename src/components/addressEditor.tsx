@@ -29,7 +29,6 @@ const AddressEditor = ({ addresses, onChange }: props) => {
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     console.log(e.nativeEvent.isComposing);
-    //@ts-ignore
     if (
       e.code === "Enter" &&
       !addresses.includes(input) &&
