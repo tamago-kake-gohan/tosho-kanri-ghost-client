@@ -1,38 +1,45 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SelectGroup.css";
+import { useRouter } from "next/navigation";
 
-interface Group {
+type Group = {
   id: number;
   name: string;
-}
+};
 
 const SelectGroup: React.FC = () => {
-  const groups: Group[] = [
-    {
-      id: 1,
-      name: "Group 1",
-    },
-    {
-      id: 2,
-      name: "Group 2",
-    },
-    {
-      id: 3,
-      name: "Group 3",
-    },
-    {
-      id: 4,
-      name: "Group 4",
-    },
-    {
-      id: 5,
-      name: "Group 5",
-    },
-  ];
+  const router = useRouter();
+  const [groupsData, setGroupsData] = useState<Group[]>([]);
+  useEffect(() => {
+    const groups: Group[] = [
+      {
+        id: 1,
+        name: "Group 1",
+      },
+      {
+        id: 2,
+        name: "Group 2",
+      },
+      {
+        id: 3,
+        name: "Group 3",
+      },
+      {
+        id: 4,
+        name: "Group 4",
+      },
+      {
+        id: 5,
+        name: "Group 5",
+      },
+    ];
+    setGroupsData(groups);
+  }, []);
 
-  const handleGroupClick = (groupId: number) => {
-    console.log(groups[groupId - 1]);
+  const onClick = (groupId: number) => {
+    const params = new URLSearchParams([["groupId", groupId.toString()]]);
+    router.push(`/lendManagement?${params.toString()}`);
   };
 
   const bookIcon = (
@@ -54,11 +61,11 @@ const SelectGroup: React.FC = () => {
       <span className="group-select-title">グループ選択</span>
       <div className="group-card">
         <ul className="group-list">
-          {groups.map((group) => (
+          {groupsData.map((group) => (
             <li
               className="group-list-item"
               key={group.id}
-              onClick={() => handleGroupClick(group.id)}
+              onClick={() => onClick(group.id)}
             >
               <div className="circle">{bookIcon}</div>
               <span className="group-list-item-text">{group.name}</span>

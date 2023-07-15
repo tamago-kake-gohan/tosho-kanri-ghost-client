@@ -11,7 +11,6 @@
 }
 
 .header-item {
-  flex: 1;
   text-align: center;
 }
 
@@ -40,6 +39,7 @@
 }
 
 .table-item-bookname {
+  cursor: pointer;
   font-size: 20px;
   text-align: left;
 }
