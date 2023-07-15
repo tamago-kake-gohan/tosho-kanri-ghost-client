@@ -1,15 +1,18 @@
 "use client";
 import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import Button from "@/components/Button/Button";
 import Styles from "@/app/signin/signin.module.scss";
 import { FormEvent, MouseEvent, useState } from "react";
 
 const GroupCreation = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const params = new URLSearchParams([["user", "1234"]]);
 
   type RESPONSE = { message: string; status: "error" | "success" };
 
@@ -32,13 +35,14 @@ const GroupCreation = () => {
             setMessage("メールアドレスかパスワードが違います");
             return;
           }
+          router.push(`/home?${params.toString()}`);
           setLoading(false);
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);
         });
     })();
-    console.log("テスト");
+    console.log(params.toString());
   };
 
   return (
