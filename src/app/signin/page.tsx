@@ -1,13 +1,11 @@
 "use client";
-import { usePathname } from "next/navigation";
 import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import Button from "@/components/Button/Button"
-import Styles from "@/app/groupCreation/groupCreation.module.scss";
-import { FormEvent, MouseEvent, useState, useEffect } from "react";
+import Styles from "@/app/signin/signin.module.scss";
+import { FormEvent, MouseEvent, useState } from "react";
  
 const GroupCreation = () => {
-  const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
@@ -66,10 +64,14 @@ const GroupCreation = () => {
             setPassword(e.target.value);
           }}
         />
-      <Button type="submit" text="ログイン" />
+        <div className={Styles.button}>
+          <Button type="submit" text="ログイン" />
+        </div>
       </form>
       {message && <div>{message}</div>}
-
+      <div className={Styles.signup}>
+      <p>新規登録は<a href="/signup">こちら</a></p>
+      </div>
     </div>
   );
 }
