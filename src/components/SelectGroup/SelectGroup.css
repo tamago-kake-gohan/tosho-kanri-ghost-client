@@ -22,6 +22,7 @@
 
 .group-list-item {
   /* リストアイテムのスタイル */
+  cursor: pointer;
   display: flex;
   align-items: center;
   margin-bottom: 16px;

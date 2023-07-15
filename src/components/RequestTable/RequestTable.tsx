@@ -1,9 +1,9 @@
 import "./RequestTable.css";
 
-interface Request {
+type Request = {
   bookName: string;
   sender: string;
-}
+};
 
 interface RequestTableProps {
   requests: Request[];
