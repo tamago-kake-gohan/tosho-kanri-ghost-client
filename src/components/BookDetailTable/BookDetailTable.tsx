@@ -5,7 +5,7 @@ import "./BookDetailTable.css";
 
 interface Book {
   bookName: string;
-  status: "貸出中" | "貸出可" | "貸出不可";
+  status: "available" | "lending" | "unavailable";
   bookReview: number;
 }
 
@@ -27,17 +27,17 @@ const BookDetailTable: React.FC<BookDetailTableProps> = ({ books }) => {
     const currentStatus = newBooks[index].status;
 
     switch (currentStatus) {
-      case "貸出可":
-        newBooks[index].status = "貸出不可";
+      case "available":
+        newBooks[index].status = "unavailable";
         break;
-      case "貸出不可":
-        newBooks[index].status = "貸出中";
+      case "unavailable":
+        newBooks[index].status = "lending";
         break;
-      case "貸出中":
-        newBooks[index].status = "貸出可";
+      case "lending":
+        newBooks[index].status = "available";
         break;
       default:
-        newBooks[index].status = "貸出可";
+        newBooks[index].status = "available";
     }
 
     setUpdatedBooks(newBooks);
