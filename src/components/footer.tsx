@@ -4,6 +4,6 @@ const Footer = () => {
       <p>フッター</p>
     </div>
   );
-}
+};
 
 export default Footer;
