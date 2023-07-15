@@ -9,9 +9,13 @@ interface Book {
 
 interface BookStatusTableProps {
   books: Book[];
+  onDetail: (index: number) => void;
 }
 
-const BookStatusTable: React.FC<BookStatusTableProps> = ({ books }) => {
+const BookStatusTable: React.FC<BookStatusTableProps> = ({
+  books,
+  onDetail,
+}) => {
   return (
     <div className="table-container">
       <div className="table-header">
@@ -21,7 +25,11 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({ books }) => {
       </div>
       <div className="table-body">
         {books.map((book, index) => (
-          <div className="table-row" key={index}>
+          <div
+            className="table-row"
+            key={index}
+            onClick={() => onDetail(index)}
+          >
             <span className="table-item table-item-bookname">
               {book.bookName}
             </span>
