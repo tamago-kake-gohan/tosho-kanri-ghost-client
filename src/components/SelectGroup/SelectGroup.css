@@ -1,0 +1,51 @@
+.group-select-title {
+  font-size: 32px;
+  color: #ffffff;
+  padding: 8px;
+}
+
+.group-card {
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.group-list {
+  /* リストのスタイル */
+  list-style-type: none;
+  padding: 0;
+}
+
+.group-list-item {
+  /* リストアイテムのスタイル */
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+.group-list-item-text {
+  /* テキストのスタイル */
+  font-size: 24px;
+  line-height: 1.2;
+  margin-left: 15px;
+  color: #ffffff;
+}
+
+.circle {
+  /* 丸い図形のスタイル */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.group-list-item.selected {
+  /* 選択されたアイテムのスタイル */
+  background-color: rgba(255, 255, 255, 0.2);
+}
