@@ -1,0 +1,43 @@
+.button {
+  display: inline-block;
+  padding: 16px;
+  background-color: #9d8de3;
+  color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  cursor: pointer;
+}
+
+.button.small {
+  font-size: 16px;
+  width: 120px;
+}
+
+.button.medium {
+  font-size: 24px;
+  width: 200px;
+}
+
+.button.large {
+  font-size: 32px;
+  width: 240px;
+}
+
+.button:hover {
+  background-color: #8c7bd4;
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
+}
