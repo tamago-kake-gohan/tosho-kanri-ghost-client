@@ -25,11 +25,6 @@ const ScannerWrapper = ({ callback }: props) => {
 
   return (
     <div className={Styles.wrapper}>
-      <div className={Styles.control}>
-        <span onClick={cancel} className={Styles.button}>
-          キャンセル
-        </span>
-      </div>
       <div ref={scannerRef} className={Styles.view}>
         <div className={Styles.message}>
           <p>読み込み中...</p>
@@ -39,6 +34,11 @@ const ScannerWrapper = ({ callback }: props) => {
         {state === 1 ? (
           <Scanner scannerRef={scannerRef} onDetected={onDetect} />
         ) : null}
+      </div>
+      <div className={Styles.control}>
+        <button onClick={cancel} className={Styles.button}>
+          キャンセル
+        </button>
       </div>
     </div>
   );

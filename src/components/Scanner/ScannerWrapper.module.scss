@@ -1,14 +1,17 @@
 .wrapper {
-  position: relative;
+  display: flex;
   flex-direction: column;
   .control {
     display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
     .button {
       border: solid 1px white;
       border-radius: 5px;
       padding: 5px;
+      margin: 5px;
       color: white;
-      position: absolute;
+      background-color: #c48fd7;
     }
   }
   .view {
@@ -25,7 +28,6 @@
     }
     canvas {
       z-index: 1;
-      border: solid 1px white;
       border-radius: 5px;
     }
     canvas,
