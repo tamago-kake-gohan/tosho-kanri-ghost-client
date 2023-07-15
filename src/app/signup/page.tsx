@@ -3,7 +3,6 @@ import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import Button from "@/components/Button/Button";
-import { AddressEditor } from "@/components/addressEditor";
 import Styles from "@/app/signin/signin.module.scss";
 import { FormEvent, MouseEvent, useState } from "react";
 
@@ -11,20 +10,12 @@ const GroupCreation = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const [groupName, setGroupName] = useState("");
-  const [memberAddress, setMemberAddress] = useState([""]);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const params = new URLSearchParams([["user", "1234"]]);
 
-  type RESERR = {
-    message: string;
-    status: "error";
-    data: string[];
-  };
-  type RESSUC = {
-    message: string;
-    status: "success";
-    team_id: number;
-  };
+  type RESPONSE = { message: string; status: "error" | "success" };
 
   const onSubmit = (
     // 引数の型指定
@@ -35,14 +26,15 @@ const GroupCreation = () => {
     setLoading(true);
     void (async () => {
       await axios
-        .post("/api/v1/create_teams", {
-          Name: groupName,
-          Emails: memberAddress,
+        .post("/api/v1/register", {
+          Email: email,
+          Name: name,
+          Password: password,
         })
-        .then((res: AxiosResponse<RESERR> | AxiosResponse<RESSUC>) => {
+        .then((res: AxiosResponse<RESPONSE>) => {
           const { data, status } = res;
           if (data.status === "error") {
-            setMessage(data.data + "は存在しません。");
+            setMessage("登録に失敗しました");
             return;
           }
           router.push(`/home?${params.toString()}`);
@@ -52,28 +44,46 @@ const GroupCreation = () => {
           console.log(e.message);
         });
     })();
+    console.log(params.toString());
   };
 
   return (
     <div className={Styles.wrapper}>
-      <h1>グループ作成</h1>
+      <h1>新規アカウント登録</h1>
+
       {loading && <div className={Styles.loading} />}
 
       <form className={Styles.form} onSubmit={onSubmit}>
-        <p>GROUP NAME</p>
+        <p>MAIL ADDRESS</p>
         <input
           type="text"
           className={Styles.input}
-          value={groupName}
+          value={email}
           onChange={(e) => {
-            setGroupName(e.target.value);
+            setEmail(e.target.value);
           }}
         />
-        <p>MEMBER MAIL ADDRESS</p>
-        <AddressEditor addresses={memberAddress} onChange={setMemberAddress} />
+        <p>NAME</p>
+        <input
+          type="type"
+          className={Styles.input}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <p>PASSWORD</p>
+        <input
+          type="password"
+          className={Styles.input}
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
         <div className={Styles.button}>
           {message && <div>{message}</div>}
-          <Button type="submit" text="作成する" />
+          <Button type="submit" text="新規登録" />
         </div>
       </form>
     </div>
