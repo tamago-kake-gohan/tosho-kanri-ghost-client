@@ -1,17 +1,30 @@
 "use client";
-import { usePathname } from "next/navigation";
 import axios from "@/components/utilAxios";
+import { AxiosResponse, AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import Button from "@/components/Button/Button";
-import Styles from "@/app/groupCreation/groupCreation.module.scss";
 import { AddressEditor } from "@/components/addressEditor";
+import Styles from "@/app/signin/signin.module.scss";
 import { FormEvent, MouseEvent, useState } from "react";
 
 const GroupCreation = () => {
-  const pathname = usePathname();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [groupName, setGroupName] = useState("");
   const [memberAddress, setMemberAddress] = useState([""]);
+  const params = new URLSearchParams([["user", "1234"]]);
+
+  type RESERR = {
+    message: string;
+    status: "error";
+    data: string[];
+  };
+  type RESSUC = {
+    message: string;
+    status: "success";
+    team_id: number;
+  };
 
   const onSubmit = (
     // 引数の型指定
@@ -21,10 +34,23 @@ const GroupCreation = () => {
     e.preventDefault();
     setLoading(true);
     void (async () => {
-      const res = await axios.post("", {
-        groupName: groupName,
-        memberAddress: memberAddress,
-      });
+      await axios
+        .post("/api/v1/create_teams", {
+          Name: groupName,
+          Emails: memberAddress,
+        })
+        .then((res: AxiosResponse<RESERR> | AxiosResponse<RESSUC>) => {
+          const { data, status } = res;
+          if (data.status === "error") {
+            setMessage(data.data + "は存在しません。");
+            return;
+          }
+          router.push(`/home?${params.toString()}`);
+          setLoading(false);
+        })
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message);
+        });
     })();
   };
 
@@ -46,10 +72,10 @@ const GroupCreation = () => {
         <p>MEMBER MAIL ADDRESS</p>
         <AddressEditor addresses={memberAddress} onChange={setMemberAddress} />
         <div className={Styles.button}>
+          {message && <div>{message}</div>}
           <Button type="submit" text="作成する" />
         </div>
       </form>
-      {message && <div>{message}</div>}
     </div>
   );
 };
