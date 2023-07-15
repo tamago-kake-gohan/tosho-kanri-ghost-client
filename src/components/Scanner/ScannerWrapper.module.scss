@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  flex-direction: column;
+  .control {
+    display: flex;
+    .button {
+      border: solid 1px white;
+      border-radius: 5px;
+      padding: 5px;
+      color: white;
+      position: absolute;
+    }
+  }
+  .view {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: auto;
+    .message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+    canvas {
+      z-index: 1;
+      border: solid 1px white;
+      border-radius: 5px;
+    }
+    canvas,
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: 16/9;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
