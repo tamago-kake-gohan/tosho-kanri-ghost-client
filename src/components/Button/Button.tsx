@@ -6,7 +6,11 @@ interface ButtonProps {
   size?: "small" | "medium" | "large";
 }
 
-const Button: React.FC<ButtonProps> = ({ text, type= "submit", size = "medium" }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  type = "submit",
+  size = "medium",
+}) => {
   const buttonClass = `button ${size}`;
 
   return (
