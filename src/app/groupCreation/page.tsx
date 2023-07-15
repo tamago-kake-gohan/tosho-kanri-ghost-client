@@ -1,11 +1,11 @@
 "use client";
 import { usePathname } from "next/navigation";
 import axios from "@/components/utilAxios";
-import Button from "@/components/Button/Button"
+import Button from "@/components/Button/Button";
 import Styles from "@/app/groupCreation/groupCreation.module.scss";
 import { AddressEditor } from "@/components/addressEditor";
 import { FormEvent, MouseEvent, useState } from "react";
- 
+
 const GroupCreation = () => {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
@@ -15,25 +15,25 @@ const GroupCreation = () => {
 
   const onSubmit = (
     // 引数の型指定
-    e: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
+    e: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>,
   ) => {
     // イベントに対するデフォルト操作のキャンセル
     e.preventDefault();
     setLoading(true);
     void (async () => {
-      const res = await axios.post("",{
+      const res = await axios.post("", {
         groupName: groupName,
-        memberAddress: memberAddress
+        memberAddress: memberAddress,
       });
     })();
   };
 
   return (
     <div className={Styles.wrapper}>
-        <h1>グループ作成</h1>
+      <h1>グループ作成</h1>
       {loading && <div className={Styles.loading} />}
-      
-      <form className={Styles.form} onSubmit={onSubmit} >
+
+      <form className={Styles.form} onSubmit={onSubmit}>
         <p>GROUP NAME</p>
         <input
           type="text"
@@ -52,6 +52,6 @@ const GroupCreation = () => {
       {message && <div>{message}</div>}
     </div>
   );
-}
+};
 
 export default GroupCreation;
