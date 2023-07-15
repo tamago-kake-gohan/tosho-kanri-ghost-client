@@ -4,7 +4,7 @@ import axios from "@/components/utilAxios";
 import Button from "@/components/Button/Button"
 import Styles from "@/app/groupCreation/groupCreation.module.scss";
 import { AddressEditor } from "@/components/addressEditor";
-import { FormEvent, MouseEvent, useState, useEffect } from "react";
+import { FormEvent, MouseEvent, useState } from "react";
  
 const GroupCreation = () => {
   const pathname = usePathname();
@@ -31,7 +31,6 @@ const GroupCreation = () => {
   return (
     <div className={Styles.wrapper}>
         <h1>グループ作成</h1>
-
       {loading && <div className={Styles.loading} />}
       
       <form className={Styles.form} onSubmit={onSubmit} >
@@ -46,7 +45,9 @@ const GroupCreation = () => {
         />
         <p>MEMBER MAIL ADDRESS</p>
         <AddressEditor addresses={memberAddress} onChange={setMemberAddress} />
-        <Button type="submit" text="作成する" size="large" />
+        <div className={Styles.button}>
+          <Button type="submit" text="作成する" />
+        </div>
       </form>
       {message && <div>{message}</div>}
     </div>
