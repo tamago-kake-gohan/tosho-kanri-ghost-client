@@ -34,6 +34,9 @@
   flex: 1;
   padding: 12px;
   color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table-item-bookname {
