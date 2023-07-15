@@ -7,9 +7,15 @@ interface Request {
 
 interface RequestTableProps {
   requests: Request[];
+  onLend: () => void;
+  onDecline: () => void;
 }
 
-const RequestTable: React.FC<RequestTableProps> = ({ requests }) => {
+const RequestTable: React.FC<RequestTableProps> = ({
+  requests,
+  onLend,
+  onDecline,
+}) => {
   return (
     <div className="table-container">
       <div className="table-header">
@@ -28,8 +34,12 @@ const RequestTable: React.FC<RequestTableProps> = ({ requests }) => {
             </span>
             <span className="table-item table-item-button">
               <div className="button-container">
-                <button className="button-item">貸す</button>
-                <button className="button-item">貸せない</button>
+                <button className="button-item" onClick={onLend}>
+                  貸す
+                </button>
+                <button className="button-item" onClick={onDecline}>
+                  貸せない
+                </button>
               </div>
             </span>
           </div>
