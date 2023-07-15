@@ -21,6 +21,14 @@ const SelectGroup: React.FC = () => {
       id: 3,
       name: "Group 3",
     },
+    {
+      id: 4,
+      name: "Group 4",
+    },
+    {
+      id: 5,
+      name: "Group 5",
+    },
   ];
 
   const handleGroupClick = (groupId: number) => {
