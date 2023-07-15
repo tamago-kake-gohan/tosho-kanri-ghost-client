@@ -1,10 +1,12 @@
+import { parse } from "path";
 import LendStatus from "../LendStatus/LendStatus";
 import "./BookStatusTable.css";
 
 interface Book {
-  bookName: string;
-  status: "貸出中" | "貸出可" | "貸出不可";
-  owner: string;
+  id: string;
+  title: string;
+  state: "available" | "lending" | "unavailable";
+  owner_name: string;
 }
 
 interface BookStatusTableProps {
@@ -24,20 +26,18 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({
         <span className="header-item">持ち主</span>
       </div>
       <div className="table-body">
-        {books.map((book, index) => (
+        {books.map((book) => (
           <div
             className="table-row"
-            key={index}
-            onClick={() => onDetail(index)}
+            key={book.id}
+            onClick={() => onDetail(parseFloat(book.id))}
           >
-            <span className="table-item table-item-bookname">
-              {book.bookName}
-            </span>
+            <span className="table-item table-item-bookname">{book.title}</span>
             <span className="table-item table-item-status">
-              <LendStatus label={book.status} />
+              <LendStatus label={book.state} />
             </span>
             <span className="table-item table-item-owner">
-              {book.owner}さん
+              {book.owner_name}さん
             </span>
           </div>
         ))}

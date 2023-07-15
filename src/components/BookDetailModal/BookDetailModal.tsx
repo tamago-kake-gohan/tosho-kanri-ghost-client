@@ -11,9 +11,9 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
   const bookAuthor = "TKG";
   const bookPage = "120";
   const bookOwner = "TKG";
-  const lendStatus = "貸出中";
+  const lendStatus = "lending";
   const bookBorrower = "TKG";
-  const bookReview = bookId;
+  const bookReview = 4;
 
   const renderRatingStars = (bookReview: number) => {
     const stars = [];
