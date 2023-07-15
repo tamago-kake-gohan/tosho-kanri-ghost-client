@@ -1,0 +1,42 @@
+.wrapper{
+  max-width: 300px;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  h1 {
+    position: absolute;
+    width: 200px;
+    top: -10rem;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+
+  .form{
+    margin:0 auto;
+    .input{
+      width:25rem;
+      height:2rem;
+      padding:0.5rem;
+      margin-bottom: 0.5rem;
+      border:none;
+      -webkit-border-radius:3rem;
+        -moz-border-radius:3rem;
+              border-radius:3rem;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background:#D9D9D9;
+      color: #000;
+      backface-visibility: hidden;
+      -webkit-transition: 0.25s ease-out;
+        -moz-transition: 0.25s ease-out;
+          -o-transition: 0.25s ease-out;
+              transition: 0.25s ease-out;
+    }
+  }
+}
