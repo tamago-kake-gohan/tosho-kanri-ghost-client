@@ -4,7 +4,7 @@ import "./lendManagement.css";
 import BookStatusTable from "@/components/BookStatusTable/BookStatusTable";
 import BookDetailModal from "@/components/BookDetailModal/BookDetailModal";
 
-const BookManagement = () => {
+const lendManagement = () => {
   const books = [
     {
       bookName: "書籍名A",
@@ -53,4 +53,4 @@ const BookManagement = () => {
   );
 };
 
-export default BookManagement;
+export default lendManagement;
