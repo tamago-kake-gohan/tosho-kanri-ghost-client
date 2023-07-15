@@ -23,6 +23,10 @@ const SelectGroup: React.FC = () => {
     },
   ];
 
+  const handleGroupClick = (groupId: number) => {
+    console.log(groups[groupId - 1]);
+  };
+
   const bookIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +47,11 @@ const SelectGroup: React.FC = () => {
       <div className="group-card">
         <ul className="group-list">
           {groups.map((group) => (
-            <li className="group-list-item" key={group.id}>
+            <li
+              className="group-list-item"
+              key={group.id}
+              onClick={() => handleGroupClick(group.id)}
+            >
               <div className="circle">{bookIcon}</div>
               <span className="group-list-item-text">{group.name}</span>
             </li>
