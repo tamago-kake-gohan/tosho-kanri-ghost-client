@@ -6,22 +6,22 @@ const BookManagement = () => {
   const books = [
     {
       bookName: "書籍名A",
-      status: "貸出中" as const,
+      status: "available" as const,
       bookReview: 3,
     },
     {
       bookName: "書籍名AB",
-      status: "貸出可" as const,
+      status: "available" as const,
       bookReview: 5,
     },
     {
       bookName: "書籍名ABC",
-      status: "貸出不可" as const,
+      status: "unavailable" as const,
       bookReview: 2,
     },
     {
       bookName: "書籍名ABCABC",
-      status: "貸出中" as const,
+      status: "lending" as const,
       owner: "TKGTKG",
       bookReview: 1,
     },
