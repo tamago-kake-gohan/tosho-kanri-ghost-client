@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import "./bookManagement.css";
+import "./lendManagement.css";
 import BookStatusTable from "@/components/BookStatusTable/BookStatusTable";
 import BookDetailModal from "@/components/BookDetailModal/BookDetailModal";
 
