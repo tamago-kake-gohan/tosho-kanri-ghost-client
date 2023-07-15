@@ -23,12 +23,6 @@ const SelectGroup: React.FC = () => {
     },
   ];
 
-  const [selectedGroup, setSelectedGroup] = useState<number | null>(null);
-
-  const handleMouseHover = (groupId: number) => {
-    setSelectedGroup(groupId);
-  };
-
   const bookIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,12 +43,7 @@ const SelectGroup: React.FC = () => {
       <div className="group-card">
         <ul className="group-list">
           {groups.map((group) => (
-            <li
-              className={`group-list-item ${selectedGroup === group.id ? "selected" : ""
-                }`}
-              key={group.id}
-              onMouseEnter={() => handleMouseHover(group.id)}
-            >
+            <li className="group-list-item" key={group.id}>
               <div className="circle">{bookIcon}</div>
               <span className="group-list-item-text">{group.name}</span>
             </li>
