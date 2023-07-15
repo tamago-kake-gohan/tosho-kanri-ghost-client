@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import axios from "@/components/utilAxios";
+import Button from "@/components/Button/Button"
 import Styles from "@/app/groupCreation/groupCreation.module.scss";
 import { AddressEditor } from "@/components/addressEditor";
 import { FormEvent, MouseEvent, useState, useEffect } from "react";
@@ -45,9 +46,9 @@ const GroupCreation = () => {
         />
         <p>MEMBER MAIL ADDRESS</p>
         <AddressEditor addresses={memberAddress} onChange={setMemberAddress} />
+        <Button type="submit" text="作成する" size="large" />
       </form>
       {message && <div>{message}</div>}
-      <button type="submit" className={Styles.button}>作成する</button>
     </div>
   );
 }
