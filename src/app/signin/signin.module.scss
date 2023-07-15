@@ -7,12 +7,18 @@
   transform: translate(-50%,-50%);
   h1 {
     position: absolute;
-    width: 200px;
+    width: 300px;
     top: -10rem;
     left: 50%;
     transform: translate(-50%,0);
   }
-
+  .signup {
+    text-align: center;
+    margin-top: 20px;
+    a {
+      color: #4c16ff;
+    }
+  }
   .form{
     margin:0 auto;
     .input{
@@ -43,4 +49,5 @@
       margin-top: 40px;
     }
   }
+
 }
