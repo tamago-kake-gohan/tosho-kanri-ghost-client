@@ -1,5 +1,8 @@
+"use client";
+import { useState } from "react";
 import "./bookManagement.css";
 import BookStatusTable from "@/components/BookStatusTable/BookStatusTable";
+import BookDetailModal from "@/components/BookDetailModal/BookDetailModal";
 
 const BookManagement = () => {
   const books = [
@@ -24,12 +27,28 @@ const BookManagement = () => {
       owner: "TKGTKG",
     },
   ];
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalBook, setModalBook] = useState(0);
+
+  const handleDetail = (bookId: number) => {
+    setModalOpen(true);
+    setModalBook(bookId);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="book-management-container">
       <div className="library-name">TKG としょかん</div>
       <div className="book-status-table">
-        <BookStatusTable books={books} />
+        <BookStatusTable books={books} onDetail={handleDetail} />
       </div>
+      {modalOpen && (
+        <BookDetailModal closeModal={closeModal} bookId={modalBook} />
+      )}
     </div>
   );
 };

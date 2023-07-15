@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import RequestTable from "@/components/RequestTable/RequestTable";
 import "./lendRequest.css";
@@ -37,10 +37,6 @@ const LendRequest = () => {
     setModalOpen(true);
     setModalMessage("貸出しませんでした");
   };
-
-  useEffect(() => {
-    console.log("message", modalMessage);
-  }, [modalMessage]);
 
   const closeModal = () => {
     setModalOpen(false);
