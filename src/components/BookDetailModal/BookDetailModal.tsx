@@ -102,20 +102,12 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
             <div className="book-size">
               <img src={images?.toString()} />
             </div>
-            <p className="book-info">
-              <span className="book-info-label">著者</span>
-              <span className="book-info-value">{bookAuthor}</span>
-            </p>
-            <p className="book-info">
-              <span className="book-info-label">ページ数</span>
-              <span className="book-info-value">{bookPage}</span>
-            </p>
           </div>
           <div className="right-block">
             <hr className="separator" />
             <div className="row">
               <p className="row-label">持ち主</p>
-              <p className="row-value">{bookOwner}さん</p>
+              <p className="row-value">{bookOwner}</p>
             </div>
             <hr className="separator" />
             <div className="row">
@@ -127,7 +119,7 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
             <hr className="separator" />
             <div className="row">
               <p className="row-label">借りてる人</p>
-              <p className="row-value">{bookBorrower}さん</p>
+              <p className="row-value">{bookBorrower}</p>
             </div>
             <hr className="separator" />
             <div className="row">
