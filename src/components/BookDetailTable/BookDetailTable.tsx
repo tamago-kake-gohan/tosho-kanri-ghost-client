@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import LendStatus from "../LendStatus/LendStatus";
 import RatingStar from "../RatingStar/RatingStar";
 import "./BookDetailTable.css";
+import axios from "../utilAxios";
 
 interface Book {
   id: number;
@@ -21,9 +22,25 @@ const BookDetailTable: React.FC<BookDetailTableProps> = ({ books }) => {
     setUpdatedBooks(books);
   }, [books]);
 
+  const setRating = async (bookId: number, rating: number) => {
+    await axios
+      .post("/api/v1/set_rate", {
+        book_id: bookId,
+        rate: rating,
+        comment: "",
+      })
+      .then((res: any) => {
+        console.log("set rate", res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleStarClick = (index: number, rating: number) => {
     const newBooks = [...updatedBooks];
     newBooks[index].rating = rating;
+    setRating(newBooks[index].id, rating);
     setUpdatedBooks(newBooks);
   };
 

@@ -26,10 +26,8 @@ const GroupCreation = () => {
     team_id: number;
   };
   const onSubmit = (
-    // 引数の型�定
     e: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>,
   ) => {
-    // イベントに対するデフォルト操作のキャンセル
     e.preventDefault();
     setLoading(true);
     void (async () => {
