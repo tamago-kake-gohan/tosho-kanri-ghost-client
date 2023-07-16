@@ -1,6 +1,5 @@
 .table-container {
   min-width: 500px;
-  width: 60%;
 }
 
 .table-header {
@@ -46,10 +45,6 @@
 
 .table-item-status {
   text-align: center;
-}
-
-.table-item-owner {
-  text-align: left;
 }
 
 /* スクロールバーのスタイル */

@@ -1,11 +1,11 @@
 .rating-stars {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .star-icon {
   width: 24px;
   height: 24px;
-  margin-right: 5px;
   cursor: pointer;
 }
