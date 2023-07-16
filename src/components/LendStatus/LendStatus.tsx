@@ -3,6 +3,11 @@ import "./LendStatus.css";
 interface ChipProps {
   label: "available" | "lending" | "unavailable";
 }
+const labelText = {
+  available: "貸出可",
+  lending: "貸出中",
+  unavailable: "貸出不可",
+};
 
 const LendStatus: React.FC<ChipProps> = ({ label }) => {
   let chipClassName = "chip";
@@ -21,7 +26,7 @@ const LendStatus: React.FC<ChipProps> = ({ label }) => {
       break;
   }
 
-  return <div className={chipClassName}>{label}</div>;
+  return <div className={chipClassName}>{labelText[label]}</div>;
 };
 
 export default LendStatus;

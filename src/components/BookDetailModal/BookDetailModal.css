@@ -68,8 +68,12 @@
 .book-size {
   width: 150px;
   height: 200px;
-  background-color: #000000;
+  border: solid 1px #000000;
   margin: 2px auto;
+}
+img {
+  height: 100%;
+  width: 100%;
 }
 
 .book-info {

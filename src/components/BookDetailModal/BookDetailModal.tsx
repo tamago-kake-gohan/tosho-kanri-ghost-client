@@ -1,22 +1,76 @@
+import axios from "@/components/utilAxios";
+import { AxiosResponse, AxiosError } from "axios";
 import LendStatus from "../LendStatus/LendStatus";
 import "./BookDetailModal.css";
+import { useEffect, useState } from "react";
 
 interface ModalProps {
   closeModal: () => void;
   bookId: number;
 }
 
+type BookDetail = {
+  message: string;
+  status: "success" | "error";
+  data: {
+    owner_name: string;
+    brrower_name: string;
+    title: string;
+    state: "available" | "lending" | "unavailable";
+    rating: number;
+  };
+};
+
 const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
-  const bookName = "書籍名ABC";
+  const userBookId = bookId;
   const bookAuthor = "TKG";
   const bookPage = "120";
-  const bookOwner = "TKG";
-  const lendStatus = "lending";
-  const bookBorrower = "TKG";
-  const bookReview = 4;
+
+  const [images, setImages] = useState("");
+  const [message, setMessage] = useState("");
+  // タイトル
+  const [bookName, setBookName] = useState("");
+  // 持ち主
+  const [bookOwner, setbookOwner] = useState("");
+  // ステータス
+  const [lendStatus, setLendStatus] = useState<
+    "available" | "lending" | "unavailable"
+  >("available");
+  // 借りてる人
+  const [bookBorrower, setBookBorrower] = useState("");
+  // 評価
+  const [bookReview, setBookReview] = useState(0);
+
+  const isbn = 9784422311074;
+
+  useEffect(() => {
+    setImages("https://iss.ndl.go.jp/thumbnail/" + isbn);
+    void (async () => {
+      await axios
+        .post("/api/v1/get_book_detail", {
+          user_book_id: userBookId,
+        })
+        .then((res: AxiosResponse<BookDetail>) => {
+          const { data, status } = res;
+          if (data.status === "error") {
+            return;
+          }
+          setMessage(data.message);
+          setbookOwner(data.data.owner_name);
+          setBookBorrower(data.data.brrower_name);
+          setBookName(data.data.title);
+          setLendStatus(data.data.state);
+          setBookReview(data.data.rating);
+        })
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message);
+        });
+    })();
+  }, []);
 
   const renderRatingStars = (bookReview: number) => {
     const stars = [];
+
     for (let i = 0; i < 5; i++) {
       stars.push(
         <svg
@@ -43,7 +97,9 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
           <div className="left-block">
             <h2 className="book-name">{bookName}</h2>
             <hr className="underline" />
-            <div className="book-size" />
+            <div className="book-size">
+              <img src={images?.toString()} />
+            </div>
             <p className="book-info">
               <span className="book-info-label">著者</span>
               <span className="book-info-value">{bookAuthor}</span>
@@ -73,7 +129,11 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
             </div>
             <hr className="separator" />
             <div className="row">
-              <p className="row-label">持ち主の評価</p>
+              <p className="row-label">
+                持ち主の
+                <br />
+                評価
+              </p>
               <div className="rating-stars">
                 {renderRatingStars(bookReview)}
               </div>
