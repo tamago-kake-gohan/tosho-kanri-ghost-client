@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-end;
   background-color: #d9d9d9;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
