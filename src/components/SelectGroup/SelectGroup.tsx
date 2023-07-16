@@ -2,39 +2,29 @@
 import { useState, useEffect } from "react";
 import "./SelectGroup.css";
 import { useRouter } from "next/navigation";
+import axios from "../utilAxios";
 
 type Group = {
   id: number;
   name: string;
+  owner: number;
 };
 
 const SelectGroup: React.FC = () => {
   const router = useRouter();
   const [groupsData, setGroupsData] = useState<Group[]>([]);
   useEffect(() => {
-    const groups: Group[] = [
-      {
-        id: 1,
-        name: "Group 1",
-      },
-      {
-        id: 2,
-        name: "Group 2",
-      },
-      {
-        id: 3,
-        name: "Group 3",
-      },
-      {
-        id: 4,
-        name: "Group 4",
-      },
-      {
-        id: 5,
-        name: "Group 5",
-      },
-    ];
-    setGroupsData(groups);
+    const getGroups = async () => {
+      await axios
+        .get("/api/v1/get_teams")
+        .then((res: any) => {
+          setGroupsData(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getGroups();
   }, []);
 
   const onClick = (groupId: number) => {
@@ -61,16 +51,20 @@ const SelectGroup: React.FC = () => {
       <span className="group-select-title">グループ選択</span>
       <div className="group-card">
         <ul className="group-list">
-          {groupsData.map((group) => (
-            <li
-              className="group-list-item"
-              key={group.id}
-              onClick={() => onClick(group.id)}
-            >
-              <div className="circle">{bookIcon}</div>
-              <span className="group-list-item-text">{group.name}</span>
-            </li>
-          ))}
+          {groupsData.length > 0 ? (
+            groupsData.map((group) => (
+              <li
+                className="group-list-item"
+                key={group.id}
+                onClick={() => onClick(group.id)}
+              >
+                <div className="circle">{bookIcon}</div>
+                <span className="group-list-item-text">{group.name}</span>
+              </li>
+            ))
+          ) : (
+            <li>　データがありません</li>
+          )}
         </ul>
       </div>
     </div>
