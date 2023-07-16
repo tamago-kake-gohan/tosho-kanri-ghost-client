@@ -4,6 +4,7 @@ import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import { useState, useEffect } from "react";
 import HomeButton from "@/components/Header/HomeButton";
+import BookManagamentButton from "./BookManagementButton";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -29,7 +30,14 @@ const Header = () => {
   });
 
   return (
-    <header className="header-container">{show ? <HomeButton /> : null}</header>
+    <header className="header-container">
+      {show ? (
+        <>
+          <BookManagamentButton />
+          <HomeButton />
+        </>
+      ) : null}
+    </header>
   );
 };
 
