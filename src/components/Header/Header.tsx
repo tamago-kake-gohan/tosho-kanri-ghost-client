@@ -10,7 +10,7 @@ const Header = () => {
   type RESPONSE = { is_logged_in: boolean };
 
   useEffect(() => {
-    void (async () => {
+    const getAuth = async () => {
       await axios
         .post("/api/v1/try_auth")
         .then((res: AxiosResponse<RESPONSE>) => {
@@ -20,11 +20,13 @@ const Header = () => {
           } else {
             setShow(false);
           }
+          console.log("test", res.data);
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);
         });
-    });
+    };
+    getAuth();
   });
 
   return (
