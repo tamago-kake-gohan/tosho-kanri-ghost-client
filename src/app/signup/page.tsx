@@ -86,6 +86,11 @@ const GroupCreation = () => {
           <Button type="submit" text="新規登録" />
         </div>
       </form>
+      <div className={Styles.signup}>
+        <p>
+          ログインは<a href="/signin">こちら</a>
+        </p>
+      </div>
     </div>
   );
 };
