@@ -18,6 +18,7 @@ type BookDetail = {
     title: string;
     state: "available" | "lending" | "unavailable";
     rating: number;
+    isbn: string;
   };
 };
 
@@ -41,20 +42,21 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
   // 評価
   const [bookReview, setBookReview] = useState(0);
 
-  const isbn = 9784422311074;
-
   useEffect(() => {
-    setImages("https://iss.ndl.go.jp/thumbnail/" + isbn);
     void (async () => {
       await axios
-        .post("/api/v1/get_book_detail", {
-          user_book_id: userBookId,
+        .get("/api/v1/get_book_detail", {
+          params: {
+            user_book_id: userBookId,
+          },
         })
         .then((res: AxiosResponse<BookDetail>) => {
+          console.log(res.data);
           const { data, status } = res;
           if (data.status === "error") {
             return;
           }
+          setImages("https://iss.ndl.go.jp/thumbnail/" + data.data.isbn);
           setMessage(data.message);
           setbookOwner(data.data.owner_name);
           setBookBorrower(data.data.brrower_name);

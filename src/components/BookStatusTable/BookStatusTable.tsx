@@ -2,11 +2,10 @@ import LendStatus from "../LendStatus/LendStatus";
 import "./BookStatusTable.css";
 
 type Book = {
-  owner_name: string;
-  borrower_name: string;
+  id: number;
   title: string;
   state: "available" | "lending" | "unavailable";
-  rating: number;
+  owner_name: string;
 };
 
 interface BookStatusTableProps {
@@ -26,12 +25,12 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({
         <span className="header-item">持ち主</span>
       </div>
       <div className="table-body">
-        {books.length > 0 ? (
+        {books.length > 0 &&
           books.map((book: Book) => (
             <div
               className="table-row"
               key={book.title}
-              onClick={() => onDetail(parseFloat(book.title))}
+              onClick={() => onDetail(book.id)}
             >
               <span className="table-item table-item-bookname">
                 {book.title}
@@ -43,10 +42,7 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({
                 {book.owner_name}さん
               </span>
             </div>
-          ))
-        ) : (
-          <li>　データがありません</li>
-        )}
+          ))}
       </div>
     </div>
   );
