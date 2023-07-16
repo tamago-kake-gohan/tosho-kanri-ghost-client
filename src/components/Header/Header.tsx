@@ -20,7 +20,6 @@ const Header = () => {
           } else {
             setShow(false);
           }
-          console.log("test", res.data);
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);

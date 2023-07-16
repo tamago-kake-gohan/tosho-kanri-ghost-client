@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import "./lendManagement.css";
 import BookStatusTable from "@/components/BookStatusTable/BookStatusTable";
 import BookDetailModal from "@/components/BookDetailModal/BookDetailModal";
+import axios from "@/components/utilAxios";
 
 type Book = {
-  id: string;
+  owner_name: string;
+  borrower_name: string;
   title: string;
   state: "available" | "lending" | "unavailable";
-  owner_name: string;
+  rating: number;
 };
 
 const lendManagement = () => {
@@ -17,33 +19,25 @@ const lendManagement = () => {
   const [modalBook, setModalBook] = useState(0);
 
   useEffect(() => {
-    const books = [
-      {
-        id: "1",
-        title: "書籍名A",
-        state: "lending" as const,
-        owner_name: "T",
-      },
-      {
-        id: "2",
-        title: "書籍名AB",
-        state: "available" as const,
-        owner_name: "TK",
-      },
-      {
-        id: "3",
-        title: "書籍名ABC",
-        state: "unavailable" as const,
-        owner_name: "TKG",
-      },
-      {
-        id: "4",
-        title: "書籍名ABCABC",
-        state: "lending" as const,
-        owner_name: "TKGTKG",
-      },
-    ];
-    setBooksData(books);
+    const getBooks = async () => {
+      var url = new URL(window.location.href);
+      var params = url.searchParams;
+      console.log(params.get("groupId"));
+      await axios
+        .get("/api/v1/get_team_books", {
+          params: {
+            team_id: params.get("groupId"),
+          },
+        })
+        .then((res: any) => {
+          console.log(res.data);
+          setBooksData(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getBooks();
   }, []);
 
   const handleDetail = (bookId: number) => {

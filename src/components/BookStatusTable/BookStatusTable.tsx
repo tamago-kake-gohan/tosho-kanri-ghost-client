@@ -1,13 +1,13 @@
-import { parse } from "path";
 import LendStatus from "../LendStatus/LendStatus";
 import "./BookStatusTable.css";
 
-interface Book {
-  id: string;
+type Book = {
+  owner_name: string;
+  borrower_name: string;
   title: string;
   state: "available" | "lending" | "unavailable";
-  owner_name: string;
-}
+  rating: number;
+};
 
 interface BookStatusTableProps {
   books: Book[];
@@ -26,21 +26,27 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({
         <span className="header-item">持ち主</span>
       </div>
       <div className="table-body">
-        {books.map((book) => (
-          <div
-            className="table-row"
-            key={book.id}
-            onClick={() => onDetail(parseFloat(book.id))}
-          >
-            <span className="table-item table-item-bookname">{book.title}</span>
-            <span className="table-item table-item-status">
-              <LendStatus label={book.state} />
-            </span>
-            <span className="table-item table-item-owner">
-              {book.owner_name}さん
-            </span>
-          </div>
-        ))}
+        {books.length > 0 ? (
+          books.map((book: Book) => (
+            <div
+              className="table-row"
+              key={book.title}
+              onClick={() => onDetail(parseFloat(book.title))}
+            >
+              <span className="table-item table-item-bookname">
+                {book.title}
+              </span>
+              <span className="table-item table-item-status">
+                <LendStatus label={book.state} />
+              </span>
+              <span className="table-item table-item-owner">
+                {book.owner_name}さん
+              </span>
+            </div>
+          ))
+        ) : (
+          <li>　データがありません</li>
+        )}
       </div>
     </div>
   );
