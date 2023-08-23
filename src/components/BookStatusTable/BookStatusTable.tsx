@@ -1,17 +1,22 @@
 import LendStatus from "../LendStatus/LendStatus";
 import "./BookStatusTable.css";
 
-interface Book {
-  bookName: string;
-  status: "貸出中" | "貸出可" | "貸出不可";
-  owner: string;
-}
+type Book = {
+  id: number;
+  title: string;
+  state: "available" | "lending" | "unavailable";
+  owner_name: string;
+};
 
 interface BookStatusTableProps {
   books: Book[];
+  onDetail: (index: number) => void;
 }
 
-const BookStatusTable: React.FC<BookStatusTableProps> = ({ books }) => {
+const BookStatusTable: React.FC<BookStatusTableProps> = ({
+  books,
+  onDetail,
+}) => {
   return (
     <div className="table-container">
       <div className="table-header">
@@ -20,19 +25,24 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({ books }) => {
         <span className="header-item">持ち主</span>
       </div>
       <div className="table-body">
-        {books.map((book, index) => (
-          <div className="table-row" key={index}>
-            <span className="table-item table-item-bookname">
-              {book.bookName}
-            </span>
-            <span className="table-item table-item-status">
-              <LendStatus label={book.status} />
-            </span>
-            <span className="table-item table-item-owner">
-              {book.owner}さん
-            </span>
-          </div>
-        ))}
+        {books.length > 0 &&
+          books.map((book: Book) => (
+            <div
+              className="table-row"
+              key={book.title}
+              onClick={() => onDetail(book.id)}
+            >
+              <span className="table-item table-item-bookname">
+                {book.title}
+              </span>
+              <span className="table-item table-item-status">
+                <LendStatus label={book.state} />
+              </span>
+              <span className="table-item table-item-owner">
+                {book.owner_name}さん
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );

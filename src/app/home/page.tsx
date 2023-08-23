@@ -1,8 +1,12 @@
+"use client";
+
 import SelectGroup from "@/components/SelectGroup/SelectGroup";
 import "./home.css";
 import Button from "@/components/Button/Button";
+import { useRouter } from "next/navigation";
 
 const Main = () => {
+  const router = useRouter();
   return (
     <div className="main-container">
       <div className="button-container">
@@ -22,9 +26,7 @@ const Main = () => {
           <Button text="返却の催促をする" size="large" />
         </div>
       </div>
-      <div className="select-group-container">
-        <SelectGroup />
-      </div>
+      <SelectGroup />
     </div>
   );
 };

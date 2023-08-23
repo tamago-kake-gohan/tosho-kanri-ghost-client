@@ -1,5 +1,5 @@
 .table-container {
-  min-width: 500px;
+  width: 100%;
 }
 
 .table-header {
@@ -39,17 +39,12 @@
 }
 
 .table-item-bookname {
-  cursor: pointer;
   font-size: 20px;
   text-align: left;
 }
 
 .table-item-status {
   text-align: center;
-}
-
-.table-item-owner {
-  text-align: left;
 }
 
 /* スクロールバーのスタイル */
@@ -63,6 +58,5 @@
 
 .table-body::-webkit-scrollbar-thumb {
   background-color: #a4a4a4;
-
   border-radius: 4px;
 }
