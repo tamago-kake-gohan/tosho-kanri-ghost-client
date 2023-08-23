@@ -50,8 +50,8 @@ const SelectGroup: React.FC = () => {
   );
 
   return (
-    <div>
-      <span className="group-select-title">グループ選択</span>
+    <div className="wrapper">
+      <span className="group-select-title">図書館選択</span>
       <div className="group-card">
         <ul className="group-list">
           {groups.map((group) => (

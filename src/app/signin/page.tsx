@@ -9,10 +9,9 @@ import { FormEvent, MouseEvent, useState } from "react";
 const GroupCreation = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("エラー文がここに表示");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const params = new URLSearchParams([["user", "1234"]]);
 
   type RESPONSE = { message: string; status: "error" | "success" };
 
@@ -35,24 +34,24 @@ const GroupCreation = () => {
             setMessage("メールアドレスかパスワードが違います");
             return;
           }
-          router.push(`/home?${params.toString()}`);
+          router.push(`/home?`);
           setLoading(false);
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);
         });
     })();
-    console.log(params.toString());
   };
 
   return (
     <div className={Styles.wrapper}>
-      <h1>図書管理ごーすと！</h1>
+      <h1>図書管理ごーすと</h1>
 
       {loading && <div className={Styles.loading} />}
 
+      {message && <div className={Styles.message}>{message}</div>}
       <form className={Styles.form} onSubmit={onSubmit}>
-        <p>MAIL ADDRESS</p>
+        <p>メールアドレス</p>
         <input
           type="text"
           className={Styles.input}
@@ -61,7 +60,7 @@ const GroupCreation = () => {
             setEmail(e.target.value);
           }}
         />
-        <p>PASSWORD</p>
+        <p>パスワード</p>
         <input
           type="password"
           className={Styles.input}
@@ -74,11 +73,8 @@ const GroupCreation = () => {
           <Button type="submit" text="ログイン" />
         </div>
       </form>
-      {message && <div>{message}</div>}
       <div className={Styles.signup}>
-        <p>
-          新規登録は<a href="/signup">こちら</a>
-        </p>
+        <a href="/signup">新しくアカウントを作成する</a>
       </div>
     </div>
   );

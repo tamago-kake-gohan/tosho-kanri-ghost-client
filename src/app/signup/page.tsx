@@ -13,7 +13,6 @@ const GroupCreation = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const params = new URLSearchParams([["user", "1234"]]);
 
   type RESPONSE = { message: string; status: "error" | "success" };
 
@@ -37,24 +36,23 @@ const GroupCreation = () => {
             setMessage("登録に失敗しました");
             return;
           }
-          router.push(`/home?${params.toString()}`);
+          router.push(`/home`);
           setLoading(false);
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);
         });
     })();
-    console.log(params.toString());
   };
 
   return (
     <div className={Styles.wrapper}>
-      <h1>新規アカウント登録</h1>
+      <h1>アカウント作成</h1>
 
       {loading && <div className={Styles.loading} />}
 
       <form className={Styles.form} onSubmit={onSubmit}>
-        <p>MAIL ADDRESS</p>
+        <p>メールアドレス</p>
         <input
           type="text"
           className={Styles.input}
@@ -63,7 +61,7 @@ const GroupCreation = () => {
             setEmail(e.target.value);
           }}
         />
-        <p>NAME</p>
+        <p>ユーザー名</p>
         <input
           type="type"
           className={Styles.input}
@@ -72,7 +70,7 @@ const GroupCreation = () => {
             setName(e.target.value);
           }}
         />
-        <p>PASSWORD</p>
+        <p>パスワード</p>
         <input
           type="password"
           className={Styles.input}
@@ -83,9 +81,12 @@ const GroupCreation = () => {
         />
         <div className={Styles.button}>
           {message && <div>{message}</div>}
-          <Button type="submit" text="新規登録" />
+          <Button type="submit" text="アカウント作成" />
         </div>
       </form>
+      <div className={Styles.signup}>
+        <a href="/signin">すでにアカウントをお持ちの方</a>
+      </div>
     </div>
   );
 };

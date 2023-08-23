@@ -7,16 +7,22 @@
   transform: translate(-50%, -50%);
   h1 {
     position: absolute;
+    text-align: center;
     width: 300px;
     top: -10rem;
     left: 50%;
     transform: translate(-50%, 0);
   }
+  .message {
+    text-align: center;
+  }
   .signup {
     text-align: center;
     margin-top: 20px;
     a {
-      color: #4c16ff;
+      border-top: 1px #acacac;
+      margin: 1px;
+      color: #a4a4a4;
     }
   }
   .form {
@@ -29,14 +35,15 @@
       border: none;
       -webkit-border-radius: 3rem;
       -moz-border-radius: 3rem;
-      border-radius: 3rem;
+      border-radius: 5px;
       -webkit-appearance: none;
       appearance: none;
       outline: 0;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      background: #d9d9d9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      background: #fff;
       color: #000;
       backface-visibility: hidden;
       -webkit-transition: 0.25s ease-out;
@@ -47,6 +54,9 @@
     .button {
       text-align: center;
       margin-top: 40px;
+    }
+    p {
+      color: #acacac;
     }
   }
 }

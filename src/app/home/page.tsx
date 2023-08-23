@@ -7,13 +7,19 @@ const Main = () => {
     <div className="main-container">
       <div className="button-container">
         <div className="button-row">
-          <Button text="グループ作成" size="large" />
+          <Button text="図書館をつくる" size="large" />
         </div>
         <div className="button-row">
-          <Button text="書籍登録" size="large" />
+          <Button text="本を登録する" size="large" />
         </div>
         <div className="button-row">
-          <Button text="貸出許可" size="large" />
+          <Button text="登録した本の確認" size="large" />
+        </div>
+        <div className="button-row">
+          <Button text="貸出を許可する" size="large" />
+        </div>
+        <div className="button-row">
+          <Button text="返却の催促をする" size="large" />
         </div>
       </div>
       <div className="select-group-container">
