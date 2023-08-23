@@ -1,27 +1,32 @@
 import "./LendStatus.css";
 
 interface ChipProps {
-  label: "貸出中" | "貸出可" | "貸出不可";
+  label: "available" | "lending" | "unavailable";
 }
+const labelText = {
+  available: "貸出可",
+  lending: "貸出中",
+  unavailable: "貸出不可",
+};
 
 const LendStatus: React.FC<ChipProps> = ({ label }) => {
   let chipClassName = "chip";
 
   switch (label) {
-    case "貸出可":
+    case "available":
       chipClassName += " chip-available";
       break;
-    case "貸出不可":
+    case "unavailable":
       chipClassName += " chip-unavailable";
       break;
-    case "貸出中":
+    case "lending":
       chipClassName += " chip-borrowed";
       break;
     default:
       break;
   }
 
-  return <div className={chipClassName}>{label}</div>;
+  return <div className={chipClassName}>{labelText[label]}</div>;
 };
 
 export default LendStatus;

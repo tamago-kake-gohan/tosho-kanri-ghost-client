@@ -3,23 +3,26 @@
   align-items: center;
   justify-content: center;
   padding: 6px 12px;
-  border-radius: 16px;
+  border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
   width: 80px;
 }
 
 .chip-available {
-  background-color: #a9dcb7;
-  color: #2e4434;
+  background-color: #303030;
+  border: 2px solid #303030;
+  color: #fff;
 }
 
 .chip-unavailable {
-  background-color: #595959;
-  color: #ffffff;
+  background-color: #b3b3b3;
+  border: 2px solid #b3b3b3;
+  color: #929292;
 }
 
 .chip-borrowed {
-  background-color: #e7aeae;
-  color: #4e3b3b;
+  border: 2px solid #303030;
+  box-sizing: border-box;
+  color: #303030;
 }
