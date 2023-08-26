@@ -5,28 +5,36 @@ import RequestTable from "@/components/RequestTable/RequestTable";
 import "./lendRequest.css";
 import Modal from "@/components/Modal/Modal";
 
+type Request = {
+  bookName: string;
+  sender: string;
+};
 const LendRequest = () => {
-  const requests = [
-    {
-      bookName: "書籍名A",
-      sender: "T",
-    },
-    {
-      bookName: "書籍名AB",
-      sender: "TK",
-    },
-    {
-      bookName: "書籍名ABC",
-      sender: "TKG",
-    },
-    {
-      bookName: "書籍名ABCABC",
-      sender: "TKGTKG",
-    },
-  ];
-
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [requestsData, setRequestsData] = useState<Request[]>([]);
+
+  useEffect(() => {
+    const requests = [
+      {
+        bookName: "書籍名A",
+        sender: "T",
+      },
+      {
+        bookName: "書籍名AB",
+        sender: "TK",
+      },
+      {
+        bookName: "書籍名ABC",
+        sender: "TKG",
+      },
+      {
+        bookName: "書籍名ABCABC",
+        sender: "TKGTKG",
+      },
+    ];
+    setRequestsData(requests);
+  }, []);
 
   const handleLend = () => {
     setModalOpen(true);
@@ -38,10 +46,6 @@ const LendRequest = () => {
     setModalMessage("貸出しませんでした");
   };
 
-  useEffect(() => {
-    console.log("message", modalMessage);
-  }, [modalMessage]);
-
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -50,7 +54,7 @@ const LendRequest = () => {
     <div className="lend-request-container">
       <div className="library-name">今届いているリクエスト</div>
       <RequestTable
-        requests={requests}
+        requests={requestsData}
         onLend={handleLend}
         onDecline={handleDecline}
       />

@@ -5,6 +5,9 @@ import { Inter } from "next/font/google";
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import SvgBook from "@/components/SvgBook/SvgBook";
+
+import styles from "./RootLayout.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +25,25 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
+        <div className={styles.svgLeftGroup}>
+          <div className={styles.svgContainer}>
+            {Array.from({ length: 4 }).map((_, index) => (
+              <SvgBook key={index} width="60px" />
+            ))}
+          </div>
+        </div>
+        <div className={styles.svgRightGroup}>
+          <div className={(styles.svgContainer, styles.svgLarge)}>
+            {Array.from({ length: 2 }).map((_, index) => (
+              <SvgBook key={index} width="80px" />
+            ))}
+          </div>
+          <div className={styles.svgContainer}>
+            {Array.from({ length: 3 }).map((_, index) => (
+              <SvgBook key={index} width="60px" />
+            ))}
+          </div>
+        </div>
         {children}
         <Footer />
       </body>

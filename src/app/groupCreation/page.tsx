@@ -12,7 +12,7 @@ const GroupCreation = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [groupName, setGroupName] = useState("");
-  const [memberAddress, setMemberAddress] = useState([""]);
+  const [memberAddress, setMemberAddress] = useState<string[]>([]);
   const params = new URLSearchParams([["user", "1234"]]);
 
   type RESERR = {
@@ -25,12 +25,9 @@ const GroupCreation = () => {
     status: "success";
     team_id: number;
   };
-
   const onSubmit = (
-    // 引数の型指定
     e: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>,
   ) => {
-    // イベントに対するデフォルト操作のキャンセル
     e.preventDefault();
     setLoading(true);
     void (async () => {

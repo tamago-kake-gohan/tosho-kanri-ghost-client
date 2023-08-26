@@ -4,13 +4,14 @@ import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import { useState, useEffect } from "react";
 import HomeButton from "@/components/Header/HomeButton";
+import BookManagamentButton from "./BookManagementButton";
 
 const Header = () => {
   const [show, setShow] = useState(false);
   type RESPONSE = { is_logged_in: boolean };
 
   useEffect(() => {
-    void (async () => {
+    const getAuth = async () => {
       await axios
         .post("/api/v1/try_auth")
         .then((res: AxiosResponse<RESPONSE>) => {
@@ -24,11 +25,19 @@ const Header = () => {
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message);
         });
-    });
+    };
+    getAuth();
   });
 
   return (
-    <header className="header-container">{show ? <HomeButton /> : null}</header>
+    <header className="header-container">
+      {show ? (
+        <>
+          <BookManagamentButton />
+          <HomeButton />
+        </>
+      ) : null}
+    </header>
   );
 };
 

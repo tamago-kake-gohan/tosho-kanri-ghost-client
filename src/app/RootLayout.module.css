@@ -1,0 +1,38 @@
+.svgLeftGroup {
+  position: fixed;
+  bottom: 28px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.svgRightGroup {
+  position: fixed;
+  bottom: 28px;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.svgContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.svgContainer svg {
+  margin-right: 5px;
+}
+
+.svgLarge {
+  display: flex;
+}
+
+@media (max-width: 685px) {
+  .svgLarge {
+    display: none;
+  }
+}

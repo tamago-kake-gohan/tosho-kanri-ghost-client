@@ -4,11 +4,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #c48fd7;
 }
 
 .library-name {
-  color: white;
   font-size: 40px;
   margin-bottom: 32px;
 }
