@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import "./bookManagement.css";
 import BookDetailTable from "@/components/BookDetailTable/BookDetailTable";
+import Styles from "@/app/bookRegistration/bookManagement.module.scss";
 import axios from "@/components/utilAxios";
 
 interface Book {

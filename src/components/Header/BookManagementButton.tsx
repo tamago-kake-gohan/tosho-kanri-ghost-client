@@ -1,12 +1,8 @@
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const BookManagamentButton = () => {
-  const router = useRouter();
-  const onClick = () => {
-    router.push("/bookManagement");
-  };
   return (
-    <button className="header-button" onClick={onClick}>
+    <Link className="header-button" href="/bookManagement">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -24,7 +20,7 @@ const BookManagamentButton = () => {
         </g>
       </svg>
       <span className="header-button-text">書籍確認</span>
-    </button>
+    </Link>
   );
 };
 

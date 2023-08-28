@@ -11,7 +11,6 @@ const Main = () => {
   return (
     <div className="main-container">
       <div className="button-container">
-        {/* ルーティングはLinkタグで */}
         <Link className="button-row" href="/groupCreation">
           <Button text="図書館をつくる" size="large" />
         </Link>
