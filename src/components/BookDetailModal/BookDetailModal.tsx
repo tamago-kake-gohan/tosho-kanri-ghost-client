@@ -96,9 +96,11 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
           &times;
         </button>
         <div className="modal-content">
-          <div className="left-block">
+          <div className="header-block">
             <h2 className="book-name">{bookName}</h2>
             <hr className="underline" />
+          </div>
+          <div className="left-block">
             <div className="book-size">
               <img src={images?.toString()} />
             </div>

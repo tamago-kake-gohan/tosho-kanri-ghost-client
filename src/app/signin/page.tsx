@@ -9,7 +9,7 @@ import { FormEvent, MouseEvent, useState } from "react";
 const GroupCreation = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("エラー文がここに表示");
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
