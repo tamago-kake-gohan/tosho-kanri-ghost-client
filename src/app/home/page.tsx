@@ -23,7 +23,7 @@ const Main = () => {
         <Link className="button-row" href="/lendRequest">
           <Button text="貸出を許可する" size="large" />
         </Link>
-        <Link className="button-row" href="/">
+        <Link className="button-row" href="/sendReturnDemand">
           <Button text="返却の催促をする" size="large" />
         </Link>
       </div>
