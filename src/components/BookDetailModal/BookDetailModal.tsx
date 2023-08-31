@@ -24,11 +24,9 @@ type BookDetail = {
 
 const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
   const userBookId = bookId;
-  const bookAuthor = "TKG";
-  const bookPage = "120";
 
   const [images, setImages] = useState("");
-  const [message, setMessage] = useState("");
+  const [_, setMessage] = useState("");
   // タイトル
   const [bookName, setBookName] = useState("");
   // 持ち主
