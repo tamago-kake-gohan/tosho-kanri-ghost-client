@@ -89,6 +89,22 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
     return stars;
   };
 
+  const onRequest = async () => {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    await axios
+      .post("/api/v1/request_rental", {
+        user_book_id: userBookId,
+        team_id: Number(params.get("groupId")),
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e: AxiosError<{ error: string }>) => {
+        console.log(e.message);
+      });
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal">
@@ -135,7 +151,14 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
               </div>
             </div>
           </div>
-          <button className="borrow-button">借りたい！</button>
+          <button
+            className="borrow-button"
+            onClick={() => {
+              onRequest();
+            }}
+          >
+            借りたい！
+          </button>
         </div>
       </div>
     </div>
