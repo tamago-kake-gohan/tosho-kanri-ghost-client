@@ -97,6 +97,7 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
       })
       .then((res) => {
         console.log(res.data);
+        closeModal();
       })
       .catch((e: AxiosError<{ error: string }>) => {
         console.log(e.message);
