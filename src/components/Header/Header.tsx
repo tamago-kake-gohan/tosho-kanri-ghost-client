@@ -5,6 +5,7 @@ import { AxiosResponse, AxiosError } from "axios";
 import { useState, useEffect } from "react";
 import HomeButton from "@/components/Header/HomeButton";
 import BookManagamentButton from "./BookManagementButton";
+import SignOutButton from "./SignOut";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -29,12 +30,19 @@ const Header = () => {
     getAuth();
   });
 
+  const signOut = async () => {
+    await axios.get("/api/v1/logout");
+  };
+
   return (
     <header className={Styles.wrapper}>
       {show ? (
         <>
           <BookManagamentButton />
           <HomeButton />
+          <div onClick={signOut}>
+            <SignOutButton />
+          </div>
         </>
       ) : null}
     </header>
