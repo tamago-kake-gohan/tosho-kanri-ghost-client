@@ -1,13 +1,9 @@
-import { useRouter } from "next/navigation";
 import Styles from "@/components/Header/Header.module.scss";
+import Link from "next/link";
 
 const HomeButton = () => {
-  const router = useRouter();
-  const onClick = () => {
-    router.push("/home");
-  };
   return (
-    <button className={Styles.headerButton} onClick={onClick}>
+    <Link className={Styles.headerButton} href="/home">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="512"
@@ -25,7 +21,7 @@ const HomeButton = () => {
         />
       </svg>
       <span className={Styles.headerButtonText}>HOME</span>
-    </button>
+    </Link>
   );
 };
 

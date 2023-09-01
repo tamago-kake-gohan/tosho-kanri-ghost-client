@@ -1,13 +1,9 @@
-import { useRouter } from "next/navigation";
 import Styles from "@/components/Header/Header.module.scss";
+import Link from "next/link";
 
 const BookManagamentButton = () => {
-  const router = useRouter();
-  const onClick = () => {
-    router.push("/bookManagement");
-  };
   return (
-    <button className={Styles.headerButton} onClick={onClick}>
+    <Link className={Styles.headerButton} href="/bookManagement">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -25,7 +21,7 @@ const BookManagamentButton = () => {
         </g>
       </svg>
       <span className={Styles.headerButtonText}>書籍確認</span>
-    </button>
+    </Link>
   );
 };
 
