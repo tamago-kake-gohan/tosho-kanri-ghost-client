@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import Styles from "@/components/Header/Header.module.scss";
 
 const BookManagamentButton = () => {
   const router = useRouter();
@@ -6,7 +7,7 @@ const BookManagamentButton = () => {
     router.push("/bookManagement");
   };
   return (
-    <button className="header-button" onClick={onClick}>
+    <button className={Styles.headerButton} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -23,7 +24,7 @@ const BookManagamentButton = () => {
           <path d="M7.473 17.135H20c-.003 1.13-.021 1.974-.113 2.64c-.109.793-.308 1.213-.613 1.513c-.306.299-.734.494-1.544.6c-.834.11-1.938.112-3.522.112H9.793c-1.584 0-2.688-.002-3.522-.111c-.81-.107-1.238-.302-1.544-.601c-.305-.3-.504-.72-.613-1.513c-.041-.3-.068-.637-.084-1.02a2.464 2.464 0 0 1 1.697-1.537c.29-.076.667-.083 1.746-.083Z" />
         </g>
       </svg>
-      <span className="header-button-text">書籍確認</span>
+      <span className={Styles.headerButtonText}>書籍確認</span>
     </button>
   );
 };

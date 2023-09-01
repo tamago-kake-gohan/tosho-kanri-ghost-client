@@ -1,4 +1,4 @@
-import "./RequestTable.css";
+import Styles from "@/components/RequestTable/RequestTable.module.scss";
 
 type Request = {
   bookName: string;
@@ -17,27 +17,27 @@ const RequestTable: React.FC<RequestTableProps> = ({
   onDecline,
 }) => {
   return (
-    <div className="table-container">
-      <div className="table-header">
-        <span className="header-item">書籍名</span>
-        <span className="header-item">リクエストした人</span>
-        <span className="header-item"></span>
+    <div className={Styles.wrapper}>
+      <div className={Styles.tableHeader}>
+        <span className={Styles.headerItem}>書籍名</span>
+        <span className={Styles.headerItem}>リクエストした人</span>
+        <span className={Styles.headerItem}></span>
       </div>
-      <div className="table-body">
+      <div className={Styles.tableBody}>
         {requests.map((request, index) => (
-          <div className="table-row" key={index}>
-            <span className="table-item table-item-bookname">
+          <div className={Styles.tableRow} key={index}>
+            <span className={`${Styles.tableItem} ${Styles.tableItemBookname}`}>
               {request.bookName}
             </span>
-            <span className="table-item table-item-sender">
+            <span className={`${Styles.tableItem} ${Styles.tableItemSender}`}>
               {request.sender}さん
             </span>
-            <span className="table-item table-item-button">
-              <div className="button-container">
-                <button className="button-item" onClick={onLend}>
+            <span className={`${Styles.tableItem} ${Styles.tableItemButton}`}>
+              <div className={Styles.buttonContainer}>
+                <button className={Styles.buttonItem} onClick={onLend}>
                   貸す
                 </button>
-                <button className="button-item" onClick={onDecline}>
+                <button className={Styles.buttonItem} onClick={onDecline}>
                   貸せない
                 </button>
               </div>

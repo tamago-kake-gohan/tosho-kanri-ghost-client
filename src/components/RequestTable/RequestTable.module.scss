@@ -1,0 +1,83 @@
+.wrapper {
+  min-width: 500px;
+  width: 60%;
+
+  .tableHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    color: white;
+  }
+
+  .headerItem {
+    flex: 1;
+    text-align: center;
+  }
+
+  .tableBody {
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .tableRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid white;
+  }
+
+  .tableItem {
+    flex: 1;
+    padding: 12px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tableItemBookname {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .tableItemSender {
+    text-align: left;
+  }
+
+  .tableItemButton {
+    text-align: center;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .buttonItem {
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  /* スクロールバーのスタイル */
+  .tableBody::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .tableBody::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .tableBody::-webkit-scrollbar-thumb {
+    background-color: rgba(157, 141, 227, 0.8);
+    border-radius: 4px;
+  }
+}

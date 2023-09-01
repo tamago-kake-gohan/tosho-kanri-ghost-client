@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import RequestTable from "@/components/RequestTable/RequestTable";
-import "./lendRequest.css";
+import Styles from "@/app/lendRequest/lendRequest.module.scss";
 import Modal from "@/components/Modal/Modal";
 
 type Request = {
@@ -51,8 +51,8 @@ const LendRequest = () => {
   };
 
   return (
-    <div className="lend-request-container">
-      <div className="library-name">今届いているリクエスト</div>
+    <div className={Styles.wrapper}>
+      <div className={Styles.libraryName}>今届いているリクエスト</div>
       <RequestTable
         requests={requestsData}
         onLend={handleLend}

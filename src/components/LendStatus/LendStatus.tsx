@@ -1,4 +1,4 @@
-import "./LendStatus.css";
+import Styles from "@/components/LendStatus/LendStatus.module.scss";
 
 interface ChipProps {
   label: "available" | "lending" | "unavailable";
@@ -10,17 +10,17 @@ const labelText = {
 };
 
 const LendStatus: React.FC<ChipProps> = ({ label }) => {
-  let chipClassName = "chip";
+  let chipClassName = `${Styles.chip}`;
 
   switch (label) {
     case "available":
-      chipClassName += " chip-available";
+      chipClassName += ` ${Styles.chipAvailable}`;
       break;
     case "unavailable":
-      chipClassName += " chip-unavailable";
+      chipClassName += ` ${Styles.chipUnavailable}`;
       break;
     case "lending":
-      chipClassName += " chip-borrowed";
+      chipClassName += ` ${Styles.chipBorrowed}`;
       break;
     default:
       break;

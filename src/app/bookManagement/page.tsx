@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import "./bookManagement.css";
+import Styles from "@/app/bookManagement/bookManagement.module.scss";
 import BookDetailTable from "@/components/BookDetailTable/BookDetailTable";
 import axios from "@/components/utilAxios";
 
@@ -29,9 +29,9 @@ const BookManagement = () => {
   }, []);
 
   return (
-    <div className="book-management-container">
-      <div className="library-name">登録した本</div>
-      <div className="book-status-table">
+    <div className={Styles.bookManagementContainer}>
+      <div className={Styles.libraryName}> 登録した本</div>
+      <div className={Styles.bookStatusTable}>
         <BookDetailTable books={booksData} />
       </div>
     </div>
