@@ -14,4 +14,43 @@
   .bookStatusTable {
     margin-top: 16px;
   }
+
+  .input {
+    width: 100%;
+    height: 2rem;
+    padding: 0.5rem;
+    border: none;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+    backface-visibility: hidden;
+    -webkit-transition: 0.25s ease-out;
+    -moz-transition: 0.25s ease-out;
+    -o-transition: 0.25s ease-out;
+    transition: 0.25s ease-out;
+  }
+
+  .searchContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .keywordBlock {
+    flex-basis: 40%;
+  }
+
+  hr {
+    background-color: #595959;
+    border: none;
+    height: 3px;
+    margin-top: 30px;
+  }
 }

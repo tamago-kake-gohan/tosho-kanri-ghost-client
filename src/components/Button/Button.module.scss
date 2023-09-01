@@ -40,8 +40,14 @@
     border-color: #595959;
   }
 
-  &:hover {
+  &.dark:hover {
     background-color: #9e9e9e;
+    transform: translateY(-1px);
+  }
+
+  &.light:hover {
+    background-color: #9e9e9e;
+    color: #fff;
     transform: translateY(-1px);
   }
 
