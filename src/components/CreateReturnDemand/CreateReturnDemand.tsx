@@ -10,7 +10,7 @@ type LendIdProps = {
 const CreateReturnDemand = ({ email, name,title }:LendIdProps) => {
   function sendReturnDemand() {
     const link = document.createElement("a");
-    link.href = `mailto:${email}?subject=返却のお願い&body=${name}さん、こんにちは。「${title}」の返却をお願いします`;
+    link.href = `mailto:${email}?subject=返却のお願い&body=${encodeURIComponent(`${name}さん、こんにちは。「${title}」の返却をお願いします`)}`;
     link.click();
   }
   return (
