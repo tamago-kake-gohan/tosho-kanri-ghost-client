@@ -5,9 +5,11 @@ import RequestTable from "@/components/RequestTable/RequestTable";
 import Styles from "@/app/lendRequest/lendRequest.module.scss";
 import Modal from "@/components/Modal/Modal";
 
-type Request = {
-  bookName: string;
-  sender: string;
+export type Request = {
+  id: number;
+  title: string;
+  borrower_name: string;
+  status: string;
 };
 const LendRequest = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,20 +19,22 @@ const LendRequest = () => {
   useEffect(() => {
     const requests = [
       {
-        bookName: "書籍名A",
-        sender: "T",
+        id: 0,
+        title: "書籍名A",
+        borrower_name: "T",
+        status: "requested",
       },
       {
-        bookName: "書籍名AB",
-        sender: "TK",
+        id: 1,
+        title: "書籍名B",
+        borrower_name: "K",
+        status: "requested",
       },
       {
-        bookName: "書籍名ABC",
-        sender: "TKG",
-      },
-      {
-        bookName: "書籍名ABCABC",
-        sender: "TKGTKG",
+        id: 2,
+        title: "書籍名C",
+        borrower_name: "G",
+        status: "accepted",
       },
     ];
     setRequestsData(requests);

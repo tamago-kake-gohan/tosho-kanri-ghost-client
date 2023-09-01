@@ -1,9 +1,7 @@
 import Styles from "@/components/RequestTable/RequestTable.module.scss";
-
-type Request = {
-  bookName: string;
-  sender: string;
-};
+import { Request } from "@/app/lendRequest/page";
+import Button from "@/components/Button/Button";
+import { Stylish } from "next/font/google";
 
 interface RequestTableProps {
   requests: Request[];
@@ -24,26 +22,37 @@ const RequestTable: React.FC<RequestTableProps> = ({
         <span className={Styles.headerItem}></span>
       </div>
       <div className={Styles.tableBody}>
-        {requests.map((request, index) => (
-          <div className={Styles.tableRow} key={index}>
-            <span className={`${Styles.tableItem} ${Styles.tableItemBookname}`}>
-              {request.bookName}
-            </span>
-            <span className={`${Styles.tableItem} ${Styles.tableItemSender}`}>
-              {request.sender}さん
-            </span>
-            <span className={`${Styles.tableItem} ${Styles.tableItemButton}`}>
-              <div className={Styles.buttonContainer}>
-                <button className={Styles.buttonItem} onClick={onLend}>
-                  貸す
-                </button>
-                <button className={Styles.buttonItem} onClick={onDecline}>
-                  貸せない
-                </button>
+        {requests.map((request, index) => {
+          if (request.status == "requested") {
+            return (
+              <div className={Styles.tableRow} key={index}>
+                <span
+                  className={`${Styles.tableItem} ${Styles.tableItemBookname}`}
+                >
+                  {request.title}
+                </span>
+                <span
+                  className={`${Styles.tableItem} ${Styles.tableItemSender}`}
+                >
+                  {request.borrower_name}さん
+                </span>{" "}
+                <span
+                  className={`${Styles.tableItem} ${Styles.tableItemButton}`}
+                >
+                  <div className={Styles.buttonContainer}>
+                    <div onClick={onLend}>
+                      <Button text="貸す" size="small" color="dark" />
+                    </div>
+                    <br />
+                    <div onClick={onDecline}>
+                      <Button text="貸さない" size="small" color="light" />
+                    </div>
+                  </div>
+                </span>
               </div>
-            </span>
-          </div>
-        ))}
+            );
+          }
+        })}
       </div>
     </div>
   );
