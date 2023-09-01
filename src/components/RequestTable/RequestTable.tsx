@@ -1,12 +1,11 @@
 import Styles from "@/components/RequestTable/RequestTable.module.scss";
 import { Request } from "@/app/lendRequest/page";
 import Button from "@/components/Button/Button";
-import { Stylish } from "next/font/google";
 
 interface RequestTableProps {
   requests: Request[];
-  onLend: () => void;
-  onDecline: () => void;
+  onLend: (userBookId: number) => void;
+  onDecline: (userBookId: number) => void;
 }
 
 const RequestTable: React.FC<RequestTableProps> = ({
@@ -40,11 +39,11 @@ const RequestTable: React.FC<RequestTableProps> = ({
                   className={`${Styles.tableItem} ${Styles.tableItemButton}`}
                 >
                   <div className={Styles.buttonContainer}>
-                    <div onClick={onLend}>
+                    <div onClick={() => onLend(request.id)}>
                       <Button text="貸す" size="small" color="dark" />
                     </div>
                     <br />
-                    <div onClick={onDecline}>
+                    <div onClick={() => onDecline(request.id)}>
                       <Button text="貸さない" size="small" color="light" />
                     </div>
                   </div>
