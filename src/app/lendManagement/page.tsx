@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import "./lendManagement.css";
+import Styles from "@/app/lendManagement/lendManagement.module.scss";
 import BookStatusTable from "@/components/BookStatusTable/BookStatusTable";
 import BookDetailModal from "@/components/BookDetailModal/BookDetailModal";
 import axios from "@/components/utilAxios";
@@ -50,9 +50,9 @@ const LendManagement = () => {
   };
 
   return (
-    <div className="book-management-container">
-      <div className="library-name">TKG としょかん</div>
-      <div className="book-status-table">
+    <div className={Styles.wrapper}>
+      <div className={Styles.libraryName}>TKG としょかん</div>
+      <div className={Styles.BookStatusTable}>
         <BookStatusTable books={booksData} onDetail={handleDetail} />
       </div>
       {modalOpen && (

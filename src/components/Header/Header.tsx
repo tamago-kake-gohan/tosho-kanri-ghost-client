@@ -1,5 +1,5 @@
 "use client";
-import "./Header.css";
+import Styles from "@/components/Header/Header.module.scss";
 import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ const Header = () => {
   });
 
   return (
-    <header className="header-container">
+    <header className={Styles.wrapper}>
       {show ? (
         <>
           <BookManagamentButton />

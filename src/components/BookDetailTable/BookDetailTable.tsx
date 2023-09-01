@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LendStatus from "../LendStatus/LendStatus";
 import RatingStar from "../RatingStar/RatingStar";
-import "./BookDetailTable.css";
+import Styles from "@/components/BookDetailTable/BookDetailTable.module.scss";
 import axios from "../utilAxios";
 
 interface Book {
@@ -66,26 +66,28 @@ const BookDetailTable: React.FC<BookDetailTableProps> = ({ books }) => {
   };
 
   return (
-    <div className="table-container">
-      <div className="table-header">
-        <span className="header-item">書籍名</span>
-        <span className="header-item">ステータス</span>
-        <span className="header-item">書籍評価</span>
+    <div className={Styles.wrapper}>
+      <div className={Styles.tableHeader}>
+        <span className={Styles.headerItem}>書籍名</span>
+        <span className={Styles.headerItem}>ステータス</span>
+        <span className={Styles.headerItem}>書籍評価</span>
       </div>
-      <div className="table-body">
+      <div className={Styles.tableBody}>
         {books.length > 0 &&
           books.map((book, index) => (
-            <div className="table-row" key={index}>
-              <span className="table-item table-item-bookname">
+            <div className={Styles.tableRow} key={index}>
+              <span
+                className={`${Styles.tableItem} ${Styles.tableItemBookname}`}
+              >
                 {book.title}
               </span>
               <span
-                className="table-item table-item-status"
+                className={`${Styles.tableItem} ${Styles.tableItemStatus}`}
                 onClick={() => handleLendStatusChange(index)}
               >
                 <LendStatus label={book.state} />
               </span>
-              <span className="table-item table-item-owner">
+              <span className={`${Styles.tableItem} ${Styles.tableItemOwner}`}>
                 <RatingStar
                   maxStars={5}
                   currentRating={book.rating}

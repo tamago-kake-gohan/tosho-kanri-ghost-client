@@ -1,10 +1,10 @@
-.group-select-title {
+.groupSelectTitle {
   font-size: 43px;
   color: #000;
   padding-bottom: 10px;
 }
 
-.group-card {
+.groupCard {
   width: 600px;
   height: 300px;
   background-color: rgba(255, 255, 255, 0.7);
@@ -16,13 +16,13 @@
   overflow-y: auto;
 }
 
-.group-list {
+.groupList {
   /* リストのスタイル */
   list-style-type: none;
   padding: 0;
 }
 
-.group-list-item {
+.groupListItem {
   /* リストアイテムのスタイル */
   cursor: pointer;
   display: flex;
@@ -31,7 +31,7 @@
   padding: 8px;
 }
 
-.group-list-item-text {
+.groupListItemText {
   /* テキストのスタイル */
   font-size: 24px;
   line-height: 1.2;
@@ -49,21 +49,21 @@
   align-items: center;
 }
 
-.group-list-item:hover {
+.groupListItem:hover {
   /* 選択されたアイテムのスタイル */
   background-color: rgba(126, 126, 126, 0.2);
 }
 
 /* スクロールバーのスタイル */
-.group-card::-webkit-scrollbar {
+.groupCard::-webkit-scrollbar {
   width: 8px;
 }
 
-.group-card::-webkit-scrollbar-track {
+.groupCard::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.group-card::-webkit-scrollbar-thumb {
+.groupCard::-webkit-scrollbar-thumb {
   background-color: #a4a4a4;
   border-radius: 4px;
 }

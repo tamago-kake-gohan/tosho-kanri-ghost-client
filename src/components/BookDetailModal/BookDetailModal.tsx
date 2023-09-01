@@ -1,7 +1,7 @@
 import axios from "@/components/utilAxios";
 import { AxiosResponse, AxiosError } from "axios";
 import LendStatus from "../LendStatus/LendStatus";
-import "./BookDetailModal.css";
+import Styles from "@/components/BookDetailModal/BookDetailModal.module.scss";
 import { useEffect, useState } from "react";
 
 interface ModalProps {
@@ -105,53 +105,52 @@ const BookDetailModal: React.FC<ModalProps> = ({ closeModal, bookId }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="close-button" onClick={closeModal}>
+    <div className={Styles.wrapper}>
+      <div className={Styles.modal}>
+        <button className={Styles.closeButton} onClick={closeModal}>
           &times;
         </button>
-        <div className="modal-content">
-          <div className="header-block">
-            <h2 className="book-name">{bookName}</h2>
-            <hr className="underline" />
+        <div className={Styles.modalContent}>
+          <div>
+            <h2 className={Styles.bookName}>{bookName}</h2>
           </div>
-          <div className="left-block">
-            <div className="book-size">
+          <div className={Styles.leftBlock}>
+            <div className={Styles.bookSize}>
               <img src={images?.toString()} />
             </div>
           </div>
-          <div className="right-block">
-            <hr className="separator" />
-            <div className="row">
-              <p className="row-label">持ち主</p>
-              <p className="row-value">{bookOwner}</p>
+          <div className={Styles.rightBlock}>
+            <hr className={Styles.separator} />
+            <div className={Styles.row}>
+              <p className={Styles.rowLabel}>持ち主</p>
+              <p className={Styles.rowValue}>{bookOwner}</p>
             </div>
-            <hr className="separator" />
-            <div className="row">
-              <p className="row-label">ステータス</p>
-              <p className="row-value">
+            <hr className={Styles.separator} />
+            <div className={Styles.row}>
+              <p className={Styles.rowLabel}>ステータス</p>
+              <p className={Styles.rowValue}>
                 <LendStatus label={lendStatus} />
               </p>
             </div>
-            <hr className="separator" />
-            <div className="row">
-              <p className="row-label">借りてる人</p>
-              <p className="row-value">{bookBorrower}</p>
+            <hr className={Styles.separator} />
+            <div className={Styles.row}>
+              <p className={Styles.rowLabel}>借りてる人</p>
+              <p className={Styles.rowValue}>{bookBorrower}</p>
             </div>
-            <hr className="separator" />
-            <div className="row">
-              <p className="row-label">
+            <hr className={Styles.separator} />
+            <div className={Styles.row}>
+              <p className={Styles.rowLabel}>
                 持ち主の
                 <br />
                 評価
               </p>
-              <div className="rating-stars">
+              <div className={Styles.ratingStars}>
                 {renderRatingStars(bookReview)}
               </div>
             </div>
           </div>
           <button
-            className="borrow-button"
+            className={Styles.borrowButton}
             onClick={() => {
               onRequest();
             }}

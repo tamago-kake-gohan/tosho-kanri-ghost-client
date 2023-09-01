@@ -1,4 +1,4 @@
-import "./Modal.css";
+import Styles from "@/components/Modal/Modal.module.scss";
 
 interface ModalProps {
   closeModal: () => void;
@@ -7,12 +7,13 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ closeModal, message }) => {
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <button className="close-button" onClick={closeModal}>
+    <div className={Styles.wrapper}>
+      M{" "}
+      <div className={Styles.modal}>
+        <button className={Styles.closeButton} onClick={closeModal}>
           &times;
         </button>
-        <div className="modal-content">
+        <div className={Styles.modalContent}>
           <p>{message}</p>
         </div>
       </div>

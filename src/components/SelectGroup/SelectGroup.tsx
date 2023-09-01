@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import "./SelectGroup.css";
+import Styles from "@/components/SelectGroup/SelectGroup.module.scss";
 import { useRouter } from "next/navigation";
 import axios from "../utilAxios";
 
@@ -47,19 +47,19 @@ const SelectGroup: React.FC = () => {
   );
 
   return (
-    <div className="wrapper">
-      <span className="group-select-title">図書館選択</span>
-      <div className="group-card">
-        <ul className="group-list">
+    <div className={Styles.wrapper}>
+      <span className={Styles.groupSelectTitle}>図書館選択</span>
+      <div className={Styles.groupCard}>
+        <ul className={Styles.groupList}>
           {groupsData.length > 0 ? (
             groupsData.map((group) => (
               <li
-                className="group-list-item"
+                className={Styles.groupListItem}
                 key={group.id}
                 onClick={() => onClick(group.id)}
               >
-                <div className="circle">{bookIcon}</div>
-                <span className="group-list-item-text">{group.name}</span>
+                <div className={Styles.circle}>{bookIcon}</div>
+                <span className={Styles.groupListItemText}>{group.name}</span>
               </li>
             ))
           ) : (

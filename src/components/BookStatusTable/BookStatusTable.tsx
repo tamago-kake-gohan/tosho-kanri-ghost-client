@@ -1,5 +1,5 @@
 import LendStatus from "../LendStatus/LendStatus";
-import "./BookStatusTable.css";
+import Styles from "@/components/BookStatusTable/BookStatusTable.module.scss";
 
 type Book = {
   id: number;
@@ -18,27 +18,29 @@ const BookStatusTable: React.FC<BookStatusTableProps> = ({
   onDetail,
 }) => {
   return (
-    <div className="table-container">
-      <div className="table-header">
-        <span className="header-item">書籍名</span>
-        <span className="header-item">ステータス</span>
-        <span className="header-item">持ち主</span>
+    <div className={Styles.wrapper}>
+      <div className={Styles.tableHeader}>
+        <span className={Styles.headerItem}>書籍名</span>
+        <span className={Styles.headerItem}>ステータス</span>
+        <span className={Styles.headerItem}>持ち主</span>
       </div>
-      <div className="table-body">
+      <div className={Styles.tableBody}>
         {books.length > 0 &&
           books.map((book: Book) => (
             <div
-              className="table-row"
+              className={Styles.tableRow}
               key={book.title}
               onClick={() => onDetail(book.id)}
             >
-              <span className="table-item table-item-bookname">
+              <span
+                className={`${Styles.tableItem} ${Styles.tableItemBookname}`}
+              >
                 {book.title}
               </span>
-              <span className="table-item table-item-status">
+              <span className={`${Styles.tableItem} ${Styles.tableItemStatus}`}>
                 <LendStatus label={book.state} />
               </span>
-              <span className="table-item table-item-owner">
+              <span className={`${Styles.tableItem} ${Styles.tableItemOwner}`}>
                 {book.owner_name}さん
               </span>
             </div>

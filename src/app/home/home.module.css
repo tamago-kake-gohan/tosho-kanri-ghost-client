@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  .buttonContainer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selectGroupContainer {
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buttonContainer > * + * {
+    margin-top: 0;
+  }
+
+  .buttonRow {
+    margin-bottom: 8px;
+  }
+}
